@@ -1,4 +1,4 @@
-class Player {
+class Players {
     constructor(name) {
       this.name = name
     }
@@ -17,6 +17,8 @@ class Deck {
         this.deck = []
         this.shuffledCards = []
         this.players = []
+        this.player1Deck = []
+        this.player2Deck = []
         this.cards = {
             suits: ['Clubs','Diamonds','Hearts','Spades'],
             ranks: ['Ace','2','3','4','5','6','7','8','9','10','Jack','Queen','King'],
@@ -27,7 +29,7 @@ class Deck {
       if (this.players.length === 2) {
         return 'Players is full!'
       }
-      this.players.push(new Player(name))
+      this.players.push(name)
     }
     createDeck() {
         const suits = this.cards.suits
@@ -38,8 +40,8 @@ class Deck {
             this.deck.push(new Card(suits[i], ranks[j], scores[j]));
           }
         }
-      }
-      shuffle() {
+    }
+    shuffle() {
         let num, num2, num3;
         for (let i = 0; i < 1000; i++) {
           num = Math.floor((Math.random() * this.deck.length));
@@ -49,14 +51,45 @@ class Deck {
           this.shuffledCards[num2] = num3;
       }
     }
+    splitShuffledDeck() {
+        this.player1Deck = this.shuffledCards.splice(0, 26)
+        this.player2Deck = this.shuffledCards.splice(0, 26)
+    }
 }
 
 const newDeck = new Deck();
-const lex = new Player('Lex')
+const lex = new Players('Lex')
 newDeck.addPlayer(lex)
-const mo = new Player('Mo')
+const mo = new Players('Mo')
 newDeck.addPlayer(mo)
-console.log(newDeck.players)
 newDeck.createDeck()
 newDeck.shuffle()
+newDeck.splitShuffledDeck()
+console.log(newDeck.player1Deck)
+console.log(newDeck.player2Deck)
 console.log(newDeck.shuffledCards)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
