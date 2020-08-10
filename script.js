@@ -1,6 +1,6 @@
 class Players {
     constructor(name) {
-      this.name = name
+        this.name = name
     }
 }
 
@@ -27,7 +27,7 @@ class Deck {
     }
     addPlayer(name) {
       if (this.players.length === 2) {
-        return 'Players is full!'
+          return 'Players is full!'
       }
       this.players.push(name)
     }
@@ -36,19 +36,19 @@ class Deck {
         const ranks = this.cards.ranks
         const scores = this.cards.scores
         for (let i = 0; i < suits.length; i++) {
-          for (let j = 0; j < ranks.length; j++) {
-            this.deck.push(new Card(suits[i], ranks[j], scores[j]));
+            for (let j = 0; j < ranks.length; j++) {
+                this.deck.push(new Card(suits[i], ranks[j], scores[j]));
           }
         }
     }
     shuffle() {
         let num, num2, num3;
         for (let i = 0; i < 1000; i++) {
-          num = Math.floor((Math.random() * this.deck.length));
-          num2 = Math.floor((Math.random() * this.deck.length));
-          num3 = this.deck[num];
-          this.shuffledCards[num] = this.shuffledCards[num2];
-          this.shuffledCards[num2] = num3;
+            num = Math.floor((Math.random() * this.deck.length));
+            num2 = Math.floor((Math.random() * this.deck.length));
+            num3 = this.deck[num];
+            this.shuffledCards[num] = this.shuffledCards[num2];
+            this.shuffledCards[num2] = num3;
       }
     }
     splitShuffledDeck() {
