@@ -15,11 +15,9 @@ class Card {
 class Deck {
     constructor() {
         this.deck = []
-        this.shuffledCards = []
         this.players = []
         this.player1Deck = []
         this.player2Deck = []
-        this.chest = []
         this.cards = {
             suits: ['Clubs', 'Diamonds', 'Hearts', 'Spades'],
             ranks: [
@@ -64,11 +62,11 @@ class Deck {
             num = Math.floor((Math.random() * this.deck.length));
             num2 = Math.floor((Math.random() * this.deck.length));
             num3 = this.deck[num];
-            this.shuffledCards[num] = this.shuffledCards[num2];
-            this.shuffledCards[num2] = num3;
+            this.deck[num] = this.deck[num2];
+            this.deck[num2] = num3;
         }
-        this.player1Deck = this.shuffledCards.splice(0, 26)
-        this.player2Deck = this.shuffledCards.splice(0, 26)
+        this.player1Deck = this.deck.splice(0, 26)
+        this.player2Deck = this.deck.splice(0, 26)
     }
 
     draw() {
