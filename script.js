@@ -87,7 +87,7 @@ class Deck {
             console.log('Player 2 gets the cards')
             console.log(`${this.players[1].name} has ${this.player2Deck.length} cards.`)
             console.log(`${this.players[0].name} has ${this.player1Deck.length} cards.`)
-            return
+            return this.draw()
         }
         if (player2Draw.score < player1Draw.score) {
             this.player1Deck.push(player2Draw)
@@ -95,12 +95,15 @@ class Deck {
             console.log('Player 1 gets the cards')
             console.log(`${this.players[0].name} has ${this.player1Deck.length} cards.`)
             console.log(`${this.players[1].name} has ${this.player2Deck.length} cards.`)
-            return
+            return this.draw()
         }
-        //return this.war()         
+        return this.war()
     }
 
     war() {
+        if (this.player1Deck.length === 1 || this.player2Deck.length === 1) {
+            return `${this.players[1].name} wins the game!`
+        }
         const player1Draw2 = this.player1Deck.splice(0, 2)
         const player2Draw2 = this.player2Deck.splice(0, 2)
         const chest = []
@@ -112,7 +115,7 @@ class Deck {
             this.chest = []
             console.log(`${this.players[0].name} has ${this.player1Deck.length} cards.`)
             console.log(`${this.players[1].name} has ${this.player2Deck.length} cards.`)
-            return
+            return this.draw()
         }
         if (player1Draw2[0].score > player2Draw2[0].score) {
             console.log('Player 1 wins the War!')
@@ -122,11 +125,11 @@ class Deck {
             this.chest = []
             console.log(`${this.players[0].name} has ${this.player1Deck.length} cards.`)
             console.log(`${this.players[1].name} has ${this.player2Deck.length} cards.`)
-            return
+            return this.draw()
         }
         console.log('Its a tie! Draw again!')
-        this.chest.push(player1Draw2)
-        this.chest.push(player2Draw2)
+        chest.push(player1Draw2)
+        chest.push(player2Draw2)
         return this.war()
     }
 }
